@@ -59,7 +59,7 @@
 
     function typeLine(text, callback) {
       let i = 0;
-      const speed = 100; // typing speed
+      const speed = 1000; // typing speed
       const interval = setInterval(() => {
         terminal.textContent += text.charAt(i);
         i++;
