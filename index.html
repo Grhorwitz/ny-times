@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fake Hacker Terminal - April Fools!</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00; /* Terminal green text */
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #terminal {
+      width: 80%;
+      max-width: 700px;
+      background: black;
+      border: 1px solid #00ff00;
+      padding: 20px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+    #reveal {
+      margin-top: 20px;
+      font-size: 2em;
+      color: red;
+      text-align: center;
+      display: none; /* hidden by default */
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <div id="reveal">APRIL FOOLS!</div>
+
+  <script>
+    // Lines to show in the "terminal"
+    const lines = [
+      "Initializing system scan...",
+      "Scanning local files...",
+      "Connecting to remote server [**********]",
+      "Retrieving IP address: 192.168.1.???",
+      "Location found: ???",
+      "Collecting personal data...",
+      "Analyzing suspicious content...",
+      "Suspicious cat memes found: 42,016 files",
+      "Gathering top-secret government documents...",
+      "System breach detected!"
+    ];
+
+    let index = 0; // Keep track of which line we're on
+    const terminal = document.getElementById('terminal');
+    const revealMessage = document.getElementById('reveal');
+
+    function typeLine(text, callback) {
+      let i = 0;
+      const speed = 25; // typing speed
+      const interval = setInterval(() => {
+        terminal.textContent += text.charAt(i);
+        i++;
+        if (i === text.length) {
+          clearInterval(interval);
+          // Add a new line after each line typed
+          terminal.textContent += '\n';
+          if (callback) callback();
+        }
+      }, speed);
+    }
+
+    function showNextLine() {
+      if (index < lines.length) {
+        typeLine(lines[index], () => {
+          index++;
+          setTimeout(showNextLine, 500); // little delay before next line
+        });
+      } else {
+        // All lines typed, now show the big reveal
+        setTimeout(() => {
+          revealMessage.style.display = 'block';
+        }, 1000);
+      }
+    }
+
+    // Start the sequence
+    showNextLine();
+  </script>
+</body>
+</html>
