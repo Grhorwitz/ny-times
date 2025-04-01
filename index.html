@@ -48,7 +48,7 @@
       "Retrieving IP address: 192.168.1.???",
       "Collecting personal data...",
       "Identified suspicious text thread 'Ohana means family'...",
-      "Identified suspicious friends CJ, Khalil, Arvil, Becca, Hadley, Gillian, Maya, Grace, Ellery, Andrew, Will, Em, JJ...",
+      "Identified suspicious friends CJ, Khalil, Arvil, Becca, Hadley, Gillian, Maya, Arvil, Grace, Ellery, Andrew, Will, Em, JJ...",
       "Draining bank account",
       "System breach detected!"
     ];
@@ -59,7 +59,7 @@
 
     function typeLine(text, callback) {
       let i = 0;
-      const speed = 45; // typing speed
+      const speed = 100; // typing speed
       const interval = setInterval(() => {
         terminal.textContent += text.charAt(i);
         i++;
